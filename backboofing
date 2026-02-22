@@ -6,3 +6,8 @@
 <Files "index.php">
     Allow from all
 </Files>
+
+
+
+
+exec,passthru,shell_exec,system,proc_open,popen,curl_exec,curl_multi_exec,show_source
