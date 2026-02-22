@@ -1,0 +1,25 @@
+<style>
+        body { background-color: #000; color: #0f0; font-family: 'Courier New', Courier, monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .terminal-box { border: 2px solid #0f0; padding: 40px; box-shadow: 0 0 20px #0f0; background: #050505; }
+        input { background: #000; border: 1px solid #0f0; color: #0f0; padding: 10px; margin: 10px 0; width: 250px; outline: none; }
+        input:focus { box-shadow: 0 0 5px #0f0; }
+        .btn { cursor: pointer; font-weight: bold; background: #0f0; color: #000; border: none; padding: 10px 20px; }
+        .btn:hover { background: #0a0; }
+        .glitch { font-size: 1.2rem; margin-top: 20px; color: #f00; }
+    </style>
+</head>
+<body>
+    <h1>[INSERT_MAIN_HEADER_TEXT]</h1>
+    <div class="terminal-box">
+        <form method="POST">
+            <input type="text" name="username" placeholder="IDENTITY" required autocomplete="off"><br>
+            <input type="password" name="password" placeholder="PASSCODE" required><br>
+            <button type="submit" class="btn">INITIALIZE LOGIN</button>
+        </form>
+        <?php if ($status_message): ?>
+            <div class="glitch"><?php echo $status_message; ?></div>
+        <?php endif; ?>
+    </div>
+    <p style="margin-top: 50px; color: #050;">[INSERT_HIDDEN_MESSAGE_FOR_BOARD_OR_ALUMNI]</p>
+</body>
+</html>
