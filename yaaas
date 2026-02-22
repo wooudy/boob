@@ -1,6 +1,14 @@
 <style>
         body { background-color: #000; color: #0f0; font-family: 'Courier New', Courier, monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
         .terminal-box { border: 2px solid #0f0; padding: 40px; box-shadow: 0 0 20px #0f0; background: #050505; }
+        
+/* !!! NEW CODE START !!! */
+        ::placeholder {
+                color: #0f0;
+                opacity: 0.6;
+        }    
+/* !!! NEW CODE END !!! */
+
         input { background: #000; border: 1px solid #0f0; color: #0f0; padding: 10px; margin: 10px 0; width: 250px; outline: none; }
         input:focus { box-shadow: 0 0 5px #0f0; }
         .btn { cursor: pointer; font-weight: bold; background: #0f0; color: #000; border: none; padding: 10px 20px; }
