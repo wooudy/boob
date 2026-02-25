@@ -1,0 +1,10 @@
+Samba Share 4.5.4 - https://download.samba.org/pub/samba/stable/samba-4.5.4.tar.gz 
+
+FTP 2.3.4 (Ignore setting up "vulnerable" services, they're gaslighting you)  
+
+VNC - TightVNC 1.3.x, RealVNC 4.x, TigerVNC 1.1.x (Pick any one of these) 
+
+SNMPv2c  
+
+SSH 6.6p1 - http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh
+6.6p1.tar.gz
