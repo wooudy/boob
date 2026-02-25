@@ -1,0 +1,48 @@
+// --- DATABASE CONFIGURATION ---
+$host = '127.0.0.1';
+$db   = 'competition_db';
+$user = 'root'; // In production, we'd use a restricted user, but root works for now
+$pass = 'YOUR_NEW_ROOT_PASSWORD'; // The one you set in mysql_secure_installation
+$charset = 'utf8mb4';
+
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+];
+
+try {
+     $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (\PDOException $e) {
+     // We don't want to leak database errors to the hacker
+     die("System Error: Identity provider unreachable.");
+}
+
+//LOGIN LOGIC
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Keep your 2-second sleep() rate limiter here!
+    sleep(2);
+
+    $user_input = $_POST['username'] ?? '';
+    $pass_input = $_POST['password'] ?? '';
+
+    // 🛡️ THE PREPARED STATEMENT
+    // We send the query with a '?' placeholder first. 
+    // The actual data follows separately so it can't be executed as code.
+    $stmt = $pdo->prepare("SELECT password_hash FROM users WHERE username = ?");
+    $stmt->execute([$user_input]);
+    $user_record = $stmt->fetch();
+
+    if ($user_record && password_verify($pass_input, $user_record['password_hash'])) {
+        // SUCCESS: The hash matches the typed password
+        session_start();
+        $_SESSION['authorized'] = true;
+        header("Location: dashboard.php");
+        exit;
+    } else {
+        // FAILURE: Generic message so they don't know if the user exists
+        $status_message = "INVALID CREDENTIALS.";
+    }
+}
