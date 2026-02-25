@@ -8,3 +8,9 @@ SNMPv2c
 
 SSH 6.6p1 - http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh
 6.6p1.tar.gz
+
+
+make clean
+export CFLAGS="-g -O2 -fcommon -Wno-error=implicit-function-declaration -DOPENSSL_API_COMPAT=0x10100000L"
+./configure --prefix=/usr --sysconfdir=/etc/ssh --with-pam --without-openssl-header-check --without-zlib-version-check
+make
