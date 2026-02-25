@@ -1,8 +1,8 @@
 // --- DATABASE CONFIGURATION ---
-$host = '127.0.0.1';
-$db   = 'competition_db';
-$user = 'root'; // In production, we'd use a restricted user, but root works for now
-$pass = 'YOUR_NEW_ROOT_PASSWORD'; // The one you set in mysql_secure_installation
+$host = '192.168.5.163';
+$db   = 'catTower_db';
+$user = 'chud'; // In production, we'd use a restricted user, but root works for now
+$pass = '$$$$superSTINKER69$$$$'; // The one you set in mysql_secure_installation
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
@@ -31,11 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // 🛡️ THE PREPARED STATEMENT
     // We send the query with a '?' placeholder first. 
     // The actual data follows separately so it can't be executed as code.
-    $stmt = $pdo->prepare("SELECT password_hash FROM users WHERE username = ?");
+    $stmt = $pdo->prepare("SELECT password_h FROM users WHERE username = ?");
     $stmt->execute([$user_input]);
     $user_record = $stmt->fetch();
 
-    if ($user_record && password_verify($pass_input, $user_record['password_hash'])) {
+    if ($user_record && password_verify($pass_input, $user_record['password_h'])) {
         // SUCCESS: The hash matches the typed password
         session_start();
         $_SESSION['authorized'] = true;
