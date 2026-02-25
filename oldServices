@@ -13,3 +13,6 @@ SSH 6.6p1 - http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh
 sudo apt install -y python3-dev libacl1-dev libattr1-dev libblkid-dev \
 libgnutls28-dev libreadline-dev python3-setuptools libpcap-dev \
 flex bison build-essential
+
+
+./configure --prefix=/opt/samba-legacy --without-ad-dc --without-ldap --without-ads
