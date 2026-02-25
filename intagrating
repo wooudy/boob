@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_input = $_POST['username'] ?? '';
     $pass_input = $_POST['password'] ?? '';
 
-    // 🛡️ THE PREPARED STATEMENT
+    // THE PREPARED STATEMENT
     // We send the query with a '?' placeholder first. 
     // The actual data follows separately so it can't be executed as code.
     $stmt = $pdo->prepare("SELECT password_h FROM users WHERE username = ?");
